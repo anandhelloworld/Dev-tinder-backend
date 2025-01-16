@@ -5,13 +5,13 @@ const User = require('../models/User')
 
 const userAuth = async (req, res, next) => {
     try {
-        const token = req.cookies.token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET||"secret")
-        const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
+        const tokken = req.cookies.tokken
+        const decoded = jwt.verify(tokken,"secretKey")
+        const user = await User.findOne({ _id: decoded.userId })
         if (!user) {
-            throw new Error("unauthorized")
+            return res.status(404).send("user not found")
         }
-        req.token = token
+        // req.tokken = tokken
         req.user = user
         next()
     } catch (error) {

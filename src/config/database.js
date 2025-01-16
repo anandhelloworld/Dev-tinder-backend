@@ -6,6 +6,6 @@ main()
   }).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://anandmohanbabu1910:c7kWfc0DHXlUvG6s@cluster0.nc4n8.mongodb.net')
+  await mongoose.connect('mongodb+srv://anandmohanbabu1910:c7kWfc0DHXlUvG6s@cluster0.nc4n8.mongodb.net/devtindr')
 
 }

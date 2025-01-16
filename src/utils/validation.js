@@ -2,8 +2,8 @@
 var validator = require('validator');
 
 const validateSignupData = (req) => {
-    const { email, password, firstName, lastName, age } = req.body;
-    if (!email || !password || !firstName || !lastName || !age) {
+    const { emailId, password, firstName, lastName, age } = req.body;
+    if (!emailId || !password || !firstName || !lastName || !age) {
         throw new Error("Missing required fields")
     }
     if(firstName.length < 3 || firstName.length > 20) {
@@ -13,7 +13,7 @@ const validateSignupData = (req) => {
         throw new Error("Last name should be in range of 3-20")
     }
 
-    if(!validator.isEmail(email)) {
+    if(!validator.isEmail(emailId)) {
         throw new Error("Invalid email")
     }
     if(!validator.isStrongPassword(password)) { 

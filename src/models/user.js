@@ -30,18 +30,18 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         trim: true,
+        required:true
     },
     age: {
-        type: Number,
+        type: String,
         trim: true,
     },
     gender: {
         type: String,
         trim: true,
-        validate: (gender) => {
-            if (!["male", "female", "others"].includes(gender)) {
-                throw new Error("Gender is invalid")
-            }
+        enum:{
+            values:["male", "female", "others"],
+            message: '{VALUE} is not supported'
         }
     },
     role: {
